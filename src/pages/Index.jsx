@@ -7,13 +7,13 @@ const Index = () => {
   const [winner, setWinner] = useState(null);
 
   useEffect(() => {
-  const winner = calculateWinner(board);
-  if (winner) {
-    setWinner(winner);
-  } else if (!board.includes(null)) {
-    setWinner("Draw");
-  }
-}, [board]);
+    const winner = calculateWinner(board);
+    if (winner) {
+      setWinner(winner);
+    } else if (!board.includes(null)) {
+      setWinner("Draw");
+    }
+  }, [board]);
 
   useEffect(() => {
     console.log("Board state:", board);
@@ -42,10 +42,10 @@ const Index = () => {
   );
 
   const resetGame = () => {
-    setBoard(Array(9).fill(null));
-    setIsXNext(true);
-    setWinner(null); // Reset winner state
-  };
+  setBoard(Array(9).fill(null));
+  setIsXNext(true);
+  setWinner(null); // Reset winner state
+};
 
   return (
     <Container centerContent maxW="container.md" height="100vh" display="flex" flexDirection="column" justifyContent="center" alignItems="center">
