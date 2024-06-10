@@ -8,11 +8,7 @@ const Index = () => {
 
   useEffect(() => {
     const winner = calculateWinner(board);
-    if (winner) {
-      setWinner(winner);
-    } else if (!board.includes(null)) {
-      setWinner("Draw");
-    }
+    setWinner(winner);
   }, [board]);
 
   const handleClick = (index) => {
@@ -22,7 +18,6 @@ const Index = () => {
     newBoard[index] = isXNext ? "X" : "O";
     setBoard(newBoard);
     setIsXNext(!isXNext);
-    setWinner(null);
   };
 
   const renderSquare = (index) => (
@@ -81,6 +76,10 @@ const calculateWinner = (squares) => {
     if (squares[a] && squares[a] === squares[b] && squares[a] === squares[c]) {
       return squares[a];
     }
+  }
+
+  if (!squares.includes(null)) {
+    return "Draw";
   }
 
   return null;
