@@ -22,7 +22,7 @@ const Index = () => {
     newBoard[index] = isXNext ? "X" : "O";
     setBoard(newBoard);
     setIsXNext(!isXNext);
-    setWinner(null);
+    setWinner(null); // Reset winner state
   };
 
   const renderSquare = (index) => (
@@ -39,7 +39,7 @@ const Index = () => {
   const resetGame = () => {
     setBoard(Array(9).fill(null));
     setIsXNext(true);
-    setWinner(null);
+    setWinner(null); // Reset winner state
   };
 
   return (
