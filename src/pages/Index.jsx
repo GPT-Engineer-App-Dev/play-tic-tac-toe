@@ -4,15 +4,16 @@ import { Container, Text, VStack, Box, Button, Grid } from "@chakra-ui/react";
 const Index = () => {
   const [board, setBoard] = useState(Array(9).fill(null));
   const [isXNext, setIsXNext] = useState(true);
-  const winner = calculateWinner(board);
+  const [winner, setWinner] = useState(null);
 
   useEffect(() => {
+    const winner = calculateWinner(board);
     if (winner) {
-      alert(`Winner: ${winner}`);
+      setWinner(winner);
     } else if (!board.includes(null)) {
-      alert("It's a draw!");
+      setWinner("Draw");
     }
-  }, [winner, board]);
+  }, [board]);
 
   const handleClick = (index) => {
     if (board[index] || winner) return;
@@ -49,8 +50,8 @@ const Index = () => {
           ))}
         </Grid>
         {winner && (
-          <Text fontSize="xl" color="green.500">
-            Winner: {winner}
+          <Text fontSize="xl" color={winner === "Draw" ? "orange.500" : "green.500"}>
+            {winner === "Draw" ? "It's a draw!" : `Winner: ${winner}`}
           </Text>
         )}
         <Button onClick={resetGame} mt={4}>
