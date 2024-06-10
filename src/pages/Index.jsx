@@ -9,8 +9,10 @@ const Index = () => {
   useEffect(() => {
     if (winner) {
       alert(`Winner: ${winner}`);
+    } else if (!board.includes(null)) {
+      alert("It's a draw!");
     }
-  }, [winner]);
+  }, [winner, board]);
 
   const handleClick = (index) => {
     if (board[index] || winner) return;
