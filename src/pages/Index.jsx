@@ -16,9 +16,13 @@ const Index = () => {
 }, [board]);
 
   useEffect(() => {
-    console.log("Board state:", board);
-    console.log("Winner:", winner);
-  }, [board, winner]);
+    const winner = calculateWinner(board);
+    if (winner) {
+      setWinner(winner);
+    } else if (!board.includes(null)) {
+      setWinner("Draw");
+    }
+  }, [board]);
 
   const handleClick = (index) => {
   if (board[index] || winner) return;
