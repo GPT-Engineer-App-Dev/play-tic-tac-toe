@@ -7,10 +7,10 @@ const Index = () => {
   const winner = calculateWinner(board);
 
   useEffect(() => {
-    if (winner) {
-      alert(`Winner: ${winner}`);
-    }
-  }, [winner]);
+  if (winner) {
+    alert(`Winner: ${winner}`);
+  }
+}, [winner]);
 
   const handleClick = (index) => {
     if (board[index] || winner) return;
