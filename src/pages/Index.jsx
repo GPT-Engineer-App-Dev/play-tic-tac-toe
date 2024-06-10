@@ -7,23 +7,23 @@ const Index = () => {
   const [winner, setWinner] = useState(null);
 
   useEffect(() => {
-    const winner = calculateWinner(board);
-    if (winner) {
-      setWinner(winner);
-    } else if (!board.includes(null)) {
-      setWinner("Draw");
-    }
-  }, [board]);
+  const winner = calculateWinner(board);
+  if (winner) {
+    setWinner(winner);
+  } else if (!board.includes(null)) {
+    setWinner("Draw");
+  }
+}, [board]);
 
   const handleClick = (index) => {
-    if (board[index] || winner) return;
+  if (board[index] || winner) return;
 
-    const newBoard = board.slice();
-    newBoard[index] = isXNext ? "X" : "O";
-    setBoard(newBoard);
-    setIsXNext(!isXNext);
-    setWinner(null); // Reset winner state
-  };
+  const newBoard = board.slice();
+  newBoard[index] = isXNext ? "X" : "O";
+  setBoard(newBoard);
+  setIsXNext(!isXNext);
+  setWinner(null); // Reset winner state
+};
 
   const renderSquare = (index) => (
     <Button
