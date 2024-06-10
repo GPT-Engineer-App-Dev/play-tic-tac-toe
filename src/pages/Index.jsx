@@ -7,28 +7,25 @@ const Index = () => {
   const [winner, setWinner] = useState(null);
 
   useEffect(() => {
-    const winner = calculateWinner(board);
-    if (winner) {
-      setWinner(winner);
-    } else if (!board.includes(null)) {
-      setWinner("Draw");
-    }
-  }, [board]);
-
-  useEffect(() => {
     console.log("Board state:", board);
     console.log("Winner:", winner);
   }, [board, winner]);
 
   const handleClick = (index) => {
-  if (board[index] || winner) return;
+    if (board[index] || winner) return;
 
-  const newBoard = board.slice();
-  newBoard[index] = isXNext ? "X" : "O";
-  setBoard(newBoard);
-  setIsXNext(!isXNext);
-  setWinner(null); // Reset winner state
-};
+    const newBoard = board.slice();
+    newBoard[index] = isXNext ? "X" : "O";
+    setBoard(newBoard);
+    setIsXNext(!isXNext);
+
+    const newWinner = calculateWinner(newBoard);
+    if (newWinner) {
+      setWinner(newWinner);
+    } else if (!newBoard.includes(null)) {
+      setWinner("Draw");
+    }
+  };
 
   const renderSquare = (index) => (
     <Button
@@ -42,10 +39,10 @@ const Index = () => {
   );
 
   const resetGame = () => {
-  setBoard(Array(9).fill(null));
-  setIsXNext(true);
-  setWinner(null); // Reset winner state
-};
+    setBoard(Array(9).fill(null));
+    setIsXNext(true);
+    setWinner(null);
+  };
 
   return (
     <Container centerContent maxW="container.md" height="100vh" display="flex" flexDirection="column" justifyContent="center" alignItems="center">
