@@ -1,10 +1,16 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Container, Text, VStack, Box, Button, Grid } from "@chakra-ui/react";
 
 const Index = () => {
   const [board, setBoard] = useState(Array(9).fill(null));
   const [isXNext, setIsXNext] = useState(true);
   const winner = calculateWinner(board);
+
+  useEffect(() => {
+    if (winner) {
+      alert(`Winner: ${winner}`);
+    }
+  }, [winner]);
 
   const handleClick = (index) => {
     if (board[index] || winner) return;
