@@ -9,11 +9,11 @@ const Index = () => {
   useEffect(() => {
     const winner = calculateWinner(board);
     if (winner) {
-      alert(`Winner: ${winner}`);
+      setWinner(winner);
     } else if (!board.includes(null)) {
-      alert("It's a draw!");
+      setWinner("Draw");
     }
-  }, [board, isXNext]);
+  }, [board]);
 
   const handleClick = (index) => {
     if (board[index] || winner) return;
@@ -22,6 +22,7 @@ const Index = () => {
     newBoard[index] = isXNext ? "X" : "O";
     setBoard(newBoard);
     setIsXNext(!isXNext);
+    setWinner(null);
   };
 
   const renderSquare = (index) => (
@@ -38,6 +39,7 @@ const Index = () => {
   const resetGame = () => {
     setBoard(Array(9).fill(null));
     setIsXNext(true);
+    setWinner(null);
   };
 
   return (
