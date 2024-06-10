@@ -15,6 +15,11 @@ const Index = () => {
   }
 }, [board]);
 
+  useEffect(() => {
+    console.log("Board state:", board);
+    console.log("Winner:", winner);
+  }, [board, winner]);
+
   const handleClick = (index) => {
   if (board[index] || winner) return;
 
