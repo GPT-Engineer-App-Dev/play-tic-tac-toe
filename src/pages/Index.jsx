@@ -86,6 +86,7 @@ const calculateWinner = (squares) => {
     return "Draw";
   }
 
+  console.log("No winner yet.");
   return null;
 };
 
