@@ -21,10 +21,10 @@ const Index = () => {
     setBoard(newBoard);
     setIsXNext(!isXNext);
 
-    const { winner, winningSquares } = calculateWinner(newBoard);
-    if (winner) {
-      setWinner(winner);
-      setWinningSquares(winningSquares);
+    const result = calculateWinner(newBoard);
+    if (result.winner) {
+      setWinner(result.winner);
+      setWinningSquares(result.winningSquares);
     } else if (!newBoard.includes(null)) {
       setWinner("Draw");
     }
