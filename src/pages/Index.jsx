@@ -33,6 +33,7 @@ const Index = () => {
       width="100px"
       fontSize="2xl"
       onClick={() => handleClick(index)}
+      color={board[index] === "X" ? "red.500" : board[index] === "O" ? "blue.500" : "black"}
     >
       {board[index]}
     </Button>
