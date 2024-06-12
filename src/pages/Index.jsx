@@ -34,7 +34,7 @@ const Index = () => {
     <Button
       as={motion.button}
       whileHover={{ scale: 1.1 }}
-      height="100px"
+      height="200px"
       width="100px"
       fontSize="2xl"
       onClick={() => handleClick(index)}
